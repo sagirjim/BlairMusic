@@ -1,0 +1,97 @@
+{% extends 'clientesapp/base.html' %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Llenar Orden</title>
+    </head>
+    <body>
+
+        {% block content %}
+            <form method="POST" class="post-form" action="/ordenfill/">
+            {% csrf_token %}
+            <div class="container">
+                <br>
+
+                <div class="form-group row">
+                    <label class="col-sm-1 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <h3>Ingrese los Datos</h3>
+                        </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-1 col-form-label">Cliente</label>
+                        <div class="col-sm-4">
+                            {{orden.client.nombre}}
+                        </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Orden</label>
+                    <div class="col-sm-4">
+                        {{orden.num_orden}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Fecha de Entrada</label>
+                    <div class="col-sm-4">
+                        {{orden.fechain}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Fecha de Salida</label>
+                    <div class="col-sm-4">
+                        {{orden.fechaout}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Instrumento</label>
+                    <div class="col-sm-4">
+                        {{orden.instrumento}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Marca</label>
+                    <div class="col-sm-4">
+                        {{orden.marca}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Referencia</label>
+                    <div class="col-sm-4">
+                        {{orden.referencia}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Serial</label>
+                    <div class="col-sm-4">
+                        {{orden.serial}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Encargado</label>
+                    <div class="col-sm-4">
+                        {{orden.encargado}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Abono</label>
+                    <div class="col-sm-4">
+                        {{orden.abono}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Procesos</label>
+                    <div class="col-sm-4">
+                        {{orden.procesos}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-4">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,41 @@
+{% extends 'clientesapp/base.html' %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Orden</title>
+    </head>
+    <body>
+    {% block content %}
+        <h1 class="mt-2">Ordenes</h1>
+        <hr class="mt-0 mb-4">
+        <div class="container">
+            <table class="table table-striped table-bordered table-sm" width=100%>
+                    <tr>
+                        <td><h1>Orden: {{orden.num_orden}}</h1>
+                        <h4>Fecha de entrada: {{orden.fechain}}</h4>
+                        <h4>Instrumento: {{orden.instrumento}}</h4>
+                        <h4>Referencia: {{orden.referencia}}</h4>
+                        <h4>Encargado: {{orden.encargado}}</h4></td>
+
+                        <td><h1>Cliente: {{orden.client.nombre}}</h1>
+                            <h4>Fecha de salida: {{orden.fechaout}}</h4>
+                            <h4>Marca: {{orden.marca}}</h4>
+                            <h4>Serial: {{orden.serial}}</h4>
+                            <h4>Abono: {{orden.abono}}</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h4>Procesos:</h4>
+                        <h4>{{orden.procesos}}</h4></td>
+
+                    </tr>
+                    <tr>
+                        <td><td><a href="/ordenupd/{{orden.id}}"><span class="btn btn-success">Editar</span></a></td></td>
+                    </tr>
+                <tbody>
+            </table>
+        </div>
+        {% endblock %}
+    </body>
+</html>
+

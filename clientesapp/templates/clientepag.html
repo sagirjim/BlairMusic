@@ -1,0 +1,37 @@
+{% extends 'clientesapp/base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cliente</title>
+
+</head>
+<body>
+    {% block content %}
+    <h1 class="mt-2">Clientes</h1>
+    <hr class="mt-0 mb-4">
+    <div class="container">
+        <table class="table table-striped table-bordered table-sm" width=100%>
+            <tr>
+                <td><h1>Nombre: {{ cliente.nombre }}</h1>
+                <h4>Cedula: {{ cliente.cedula }}</h4>
+                <h4>Celular: {{ cliente.celular }}</h4>
+                <h4>E-mail: {{ cliente.email }}</h4>
+                <h4>Direccion: {{ cliente.direccion }}</h4></td>
+
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <a href="/edit/{{cliente.id}}"><span class="btn btn-success">Editar</span></a>
+                    <a href="/ordenfill/"><span class="btn btn-success">Nueva Orden</span></a>
+                </td>
+            </tr>
+        <tbody>
+
+    </div>
+    {% endblock %}
+</body>
+</html>
