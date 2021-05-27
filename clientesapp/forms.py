@@ -11,7 +11,9 @@ class clienteForm(forms.ModelForm):
 class ordenForm(forms.ModelForm):
     class Meta:
         model = Orden
-        fields = '__all__'
+        exclude = [
+            "client"
+        ]
 
 
 

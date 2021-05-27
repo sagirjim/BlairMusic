@@ -129,18 +129,25 @@ def ordenindex(request):
     return render(request, "ordenindex.html", {})
 
 
-def ordenfill(request):
-
+def ordenfill(request, client_id):
     if request.method == 'POST':
         orden = ordenForm(request.POST)
         print(orden.errors)
         if orden.is_valid():
+            orden.instance.client_id = client_id
             init = orden.save()
             return redirect('ordenview', id=init.id)
-
     else:
         orden = ordenForm()
-    return render(request, 'ordenfill.html', {'orden': orden})
+
+    client = Cliente.objects.get(id=client_id)
+
+    context = {
+        'orden': orden,
+        'client': client,
+    }
+
+    return render(request, 'ordenfill.html', context)
 
 
 def ordenview(request, id):
@@ -151,6 +158,30 @@ def ordenview(request, id):
 def ordenupd(request, id):
     orden = Orden.objects.get(id=id)
     return render(request, "ordenupd.html", {'orden': orden})
+
+# def ordenupd(request, id):
+#     instance = Orden.objects.get(id=id)
+#     if request.method == 'POST':
+#         # orden = ordenForm(request.POST)
+#         # print(orden.errors)
+#         # if orden.is_valid():
+#         #     orden.instance.client_id = client_id
+#         #     init = orden.save()
+#         #     return redirect('ordenview', id=init.id)
+#         pass
+#     else:
+#         orden = ordenForm(instance=instance)
+#
+#     client = instance.client
+#
+#     context = {
+#         'orden': orden,
+#         'client': client,
+#     }
+#
+#     # return render(request, "ordenupd.html", context)
+#     return render(request, 'ordenfill.html', context)
+
 
 
 def ordenmod(request, id):
