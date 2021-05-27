@@ -1,8 +1,5 @@
 from django.db import models
-from django.forms import ModelForm, Textarea
 
-
-# Create your models here.
 
 class Cliente(models.Model):
     cedula = models.CharField(max_length=20)
@@ -10,9 +7,6 @@ class Cliente(models.Model):
     celular = models.CharField(max_length=10)
     email = models.EmailField(max_length=50)
     direccion = models.CharField(max_length=100, default='direccion')
-
-    class Meta:
-        db_table = 'datosclientes'
 
 
 class Orden(models.Model):
@@ -27,9 +21,5 @@ class Orden(models.Model):
     abono = models.CharField(max_length=15, default='')
     procesos = models.TextField(default='')
     client = models.ForeignKey(Cliente, on_delete=models.CASCADE, default='')
-
-    class Meta:
-        db_table = 'datos_ordenes'
-
 
 

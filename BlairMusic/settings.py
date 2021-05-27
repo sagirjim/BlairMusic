@@ -29,18 +29,26 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'clientesapp.apps.ClientesappConfig',
-    'register.apps.RegisterConfig',
+]
+
+THIRDPARTY_APPS = [
     'crispy_forms',
     'django_filters',
 ]
+
+CUSTOM_APPS = [
+    'clientesapp.apps.ClientesappConfig',
+    'register.apps.RegisterConfig',
+]
+
+INSTALLED_APPS = DJANGO_APPS + THIRDPARTY_APPS + CUSTOM_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -77,15 +85,11 @@ WSGI_APPLICATION = 'BlairMusic.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'blairmusic2',
-        'USER': 'root',
-        'PASSWORD': '',
+        'USER': 'postgres',
+        'PASSWORD': os.environ["DATABASE_PASSWORD"],
         'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS': {
-            'sql_mode': 'traditional',
-        }
     }
 }
 
@@ -128,3 +132,5 @@ STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 LOGIN_REDIRECT_URL = "/"
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
